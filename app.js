@@ -25,20 +25,19 @@ async function send() {
   aiMessageDiv.classList.add("cursor"); // Add typing cursor
 
   try {
-    const response = await fetch("http://localhost:4000", {
+    const response = await fetch("/", {
       method: "POST",
       body: JSON.stringify({ message }),
     });
 
     const decoder = new TextDecoder();
-    
+
     // IMPORTANT: Streaming Logic
     for await (const chunk of response.body) {
       const text = decoder.decode(chunk, { stream: true });
       aiMessageDiv.textContent += text;
       output.scrollTop = output.scrollHeight;
     }
-    
   } catch (err) {
     aiMessageDiv.textContent += "\nError: Could not connect to server.";
     console.error(err);
