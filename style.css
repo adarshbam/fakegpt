@@ -18,23 +18,19 @@
 
 body {
   background-color: var(--bg-color);
-
-  /* REPLACE THIS SECTION */
   background-image: url("./FakeGPT-BG.webp");
-
-  /* Optional: Ensure the image covers the whole screen */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* Keep the rest of the body styles... */
   color: var(--text-color);
   font-family: var(--font-family);
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
 body::before {
   content: "";
   position: fixed;
@@ -47,11 +43,12 @@ body::before {
 #app {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+
+  min-height: 100dvh;
   width: 100%;
+
   position: relative;
+  z-index: 1;
 }
 
 #chat-history {
@@ -201,5 +198,9 @@ button:disabled {
   }
   .message.ai {
     max-width: 100%;
+  }
+
+  #input-container {
+    padding-bottom: 3rem;
   }
 }
