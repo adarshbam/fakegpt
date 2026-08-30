@@ -1,4 +1,4 @@
-﻿# 🤖 FakeGPT — Lightweight Node.js AI Streaming Engine
+# 🤖 FakeGPT — Lightweight Node.js AI Streaming Engine
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 
 Instead of buffering entire LLM completions in memory before sending a payload to the client, **FakeGPT** pipes tokens directly from the model stream into the outgoing HTTP response stream as they arrive.
 
-`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor User as Client Browser
@@ -37,16 +37,16 @@ sequenceDiagram
     end
     
     NodeHTTP->>User: res.end()
-`
+```
 
 ---
 
 ## ⚡ Key Technical Highlights
 
-- **Zero-Framework Lightweight Server:** Built entirely on Node.js core http, s, and path modules without Express or heavy dependencies.
-- **Asynchronous Chunk Iterators:** Implements or await (const chunk of req) and or await (const part of stream) for memory-safe backpressure handling.
-- **Static Asset Streaming:** Serves HTML, CSS, and client-side JavaScript via s.createReadStream().pipe(res) with accurate MIME type mapping.
-- **Streaming UI:** Real-time typewriter effect in the frontend using standard etch() and ReadableStream decoding.
+- **Zero-Framework Lightweight Server:** Built entirely on Node.js core `http`, `fs`, and `path` modules without Express or heavy dependencies.
+- **Asynchronous Chunk Iterators:** Implements `for await (const chunk of req)` and `for await (const part of stream)` for memory-safe backpressure handling.
+- **Static Asset Streaming:** Serves HTML, CSS, and client-side JavaScript via `fs.createReadStream().pipe(res)` with accurate MIME type mapping.
+- **Streaming UI:** Real-time typewriter effect in the frontend using standard `fetch()` and `ReadableStream` decoding.
 
 ---
 
@@ -65,7 +65,8 @@ sequenceDiagram
 - An API Key (OpenAI or OpenRouter)
 
 ### Installation
-`ash
+
+```bash
 # 1. Clone the repository
 git clone https://github.com/adarshbam/fakegpt.git
 cd fakegpt
@@ -79,9 +80,9 @@ OPENAI_API_KEY=your_api_key_here
 
 # 4. Start the streaming server
 npm start
-`
+```
 
-Open http://localhost:4000 in your browser.
+Open `http://localhost:4000` in your browser.
 
 ---
 
